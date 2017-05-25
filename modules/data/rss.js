@@ -1,6 +1,6 @@
-var Feed = require('rss-to-json');
+const Feed = require('rss-to-json');
 module.exports=function(topic,callback){
-	var url;
+	let url;
 	switch (topic) {
 		case 'foot' :
 			url = 'http://www.matchendirect.fr/rss/info.xml';
