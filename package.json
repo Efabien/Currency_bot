@@ -1,17 +1,17 @@
 {
   "name": "foot_api",
   "version": "1.0.0",
-  "description": "providing foot-ball info from an api",
+  "description": "providing data with a RESTfull API",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Efabien/footApi.git"
+    "url": "https://github.com/Efabien/rssToAPI.git"
   },
   "keywords": [
-    "soccer",
+    "data",
     "api"
   ],
   "author": "EnoneDev",
@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/Efabien/footApi#readme",
   "dependencies": {
+    "bluebird": "^3.5.0",
+    "cheerio": "latest",
     "body-parser": "^1.17.1",
     "cors": "^2.8.3",
     "express": "^4.15.2",
