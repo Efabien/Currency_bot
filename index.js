@@ -3,7 +3,7 @@ const cors = require('cors');
 const app = express();
 const bodyParser = require('body-parser');
 const auth = require('./middlewares/auth.js');
-const routes = require('./routes/router.js');
+const routes = require('./routes');
 
 //setting port
 app.set('port', (process.env.PORT || 3000));
