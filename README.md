@@ -1,3 +1,3 @@
-# rss feed to API
-a way to turn few rss feed to API
+# public web ressources to API
+a way to serve web ressources through an API built with node
 
