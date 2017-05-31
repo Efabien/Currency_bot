@@ -8,9 +8,9 @@ module.exports = function(req,res){
 	})
 	.catch(function(e) {
 		console.log(e);
-		res.json({
-			error: true,
-			message: 'ressource not available'
+		res.status(500)
+		.json({
+			error: 'ressource not available'
 		});
 	});
 };
