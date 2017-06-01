@@ -1,5 +1,5 @@
 const Promise = require('bluebird');
-const Scraper = require('./scraper');
+const Scraper = require('../scraper');
 const scraper = new Scraper();
 const cheerio = require('cheerio');
 const url = 'http://www.banque-centrale.mg/';

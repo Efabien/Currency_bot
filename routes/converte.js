@@ -1,4 +1,4 @@
-const extractor = require('../modules/extractor')();
+const extractor = require('../modules/extractor/extractor-currency')();
 const tool = require('../modules/managers/tool');
 
 module.exports = function(req,res){

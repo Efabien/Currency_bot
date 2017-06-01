@@ -1,4 +1,4 @@
-const extractor = require('../modules/extractor.js')();
+const extractor = require('../modules/extractor/extractor-currency')();
 
 module.exports = function(req,res){
 	const money = req.params.money;
