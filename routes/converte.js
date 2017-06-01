@@ -3,7 +3,7 @@ const tool = require('../modules/managers/tool');
 
 module.exports = function(req,res){
 	const money = req.params.money;
-	let amount =tool.numberify(req.query.amount);
+	let amount = tool.numberify(req.query.amount);
 	
 	extractor.getValue(money)
 	.then(function(value) {
