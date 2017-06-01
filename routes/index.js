@@ -1,7 +1,8 @@
 const express=require('express');
 const router = express.Router(); 
 const feed = require('./feed');
-const currency = require('./currency')
+const currency = require('./currency');
+const converte = require('./converte');
 
 //defining routes
 router.get('/',function(req,res){
@@ -22,5 +23,8 @@ router.get('/feed/:topic/:action', feed);
 money can be EUR, USD, SGBD, JPY...
 */
 router.get('/value/:money', currency);
+
+//converte route
+router.get('/converte/:money', converte);
 
 exports.router=router;

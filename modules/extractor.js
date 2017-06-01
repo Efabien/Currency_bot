@@ -17,7 +17,7 @@ module.exports = function() {
 				
 				if (found) {
 					let money = el.children[0].data;
-					let value = (el.next.children[0].data).replace(/^ */,'');
+					let value = (el.next.children[0].data).replace(/^ */,'').split(' ').join('');
 					result[money] = value;
 				}
 			});
