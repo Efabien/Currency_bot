@@ -20,6 +20,7 @@ requires a secrete token set in the headers as "autorization"
 */
 router.get('/feed/:topic/:action', feed);
 
+// gets all feed
 router.get('/every', every);
 /**
 money can be EUR, USD, SGBD, JPY...
