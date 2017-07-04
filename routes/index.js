@@ -3,6 +3,7 @@ const router = express.Router();
 const feed = require('./feed');
 const currency = require('./currency');
 const converte = require('./converte');
+const every = require('./every');
 
 //defining routes
 router.get('/',function(req,res){
@@ -19,6 +20,7 @@ requires a secrete token set in the headers as "autorization"
 */
 router.get('/feed/:topic/:action', feed);
 
+router.get('/every', every);
 /**
 money can be EUR, USD, SGBD, JPY...
 */
