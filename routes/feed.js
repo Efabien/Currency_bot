@@ -12,6 +12,7 @@ module.exports = function(req,res){
 				for(let i=0;i<result.length;i++){
 					if(result[i].created===parseInt(req.query.ref)){
 						res.send(result[i+1]);
+						break;
 					}else if(i===result.length-1){
 						res.send({"message":"no more info"});
 					}
