@@ -31,7 +31,12 @@ Feed.load(url, function(err, rss){
     if(err){
     	console.log(err)
     }else{
-    callback(rss.items);
-	}
+    	const raw = rss.items;
+    	console.log(raw);
+    	for (let i = 0; i < raw.length - 1; i++) {
+    		if (raw[i].created === raw[i+1].created) raw[i+1].created ++;
+    	}
+    	callback(raw);
+		}
 });
 }
