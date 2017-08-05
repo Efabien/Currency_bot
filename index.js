@@ -3,6 +3,7 @@ const cors = require('cors');
 const app = express();
 const bodyParser = require('body-parser');
 const auth = require('./middlewares/auth.js');
+const logger = require('./middlewares/logger.js');
 const routes = require('./routes');
 
 //setting port
@@ -17,6 +18,8 @@ app.use(cors());
 
 //auth
 app.use(auth);
+
+app.user(logger);
 
 //register routes with the api prefixe
 app.use('/api', routes.router);
