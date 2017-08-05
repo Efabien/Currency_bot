@@ -19,7 +19,7 @@ app.use(cors());
 //auth
 app.use(auth);
 
-app.user(logger);
+app.use(logger);
 
 //register routes with the api prefixe
 app.use('/api', routes.router);
