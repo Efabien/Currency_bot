@@ -3,10 +3,13 @@ const rss=require('../modules/data/rss.js');
 module.exports = function(req,res){	
 	const topic = req.params.topic;
 	const action = req.params.action;
+	const limit = parseInt(req.query.limit) || 1;
 		rss(topic,function(result){
 			switch (action){
 				case 'fresh' :
-				res.send(result[0]);
+				let toSend = result.slice(0, limit);
+				if (toSend.length === 1) toSend = toSend[0];
+				res.send(toSend);
 				break;
 				case 'next' :
 				for(let i=0;i<result.length;i++){
