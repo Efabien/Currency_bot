@@ -4,7 +4,7 @@ module.exports = function(req,res){
 	const topic = req.params.topic;
 	const action = req.params.action;
 	const limit = parseInt(req.query.limit) || 1;
-		rss(topic,function(result){
+		rss(topic, (result) => {
 			switch (action){
 				case 'fresh' :
 				let toSend = result.slice(0, limit);
