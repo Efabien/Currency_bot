@@ -40,7 +40,11 @@ module.exports = (req, res) => {
 				return match.containders.indexOf(playedBy) > -1;
 			});
 		}
-
-			res.send(result);
+		result.sort((a, b) => {
+			if (a.date > b.date) return -1;
+					if (a.date < b.date) return 1;
+					return 0;	
+		});
+		res.send(result);
 	});
 }
