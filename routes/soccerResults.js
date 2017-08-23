@@ -1,9 +1,9 @@
-const rss=require('../modules/data/rss.js');
+const rss=require('../modules/data/rss');
+const tool = require('../modules/managers/tool');
 
 module.exports = (req, res) => {
 	rss('championsLeagueResult', raw => {
-		console.log(raw);
-		const result = raw.map(data => {
+		let result = raw.map(data => {
 			const match = {};
 			match.containders = data.title.split(' v ');
 			const description = data.description.replace(/<br\/>.+/, '');
@@ -24,6 +24,23 @@ module.exports = (req, res) => {
 			match.date = data.created;
 			return match;
 		});
-		res.send(result);
+
+		// by containders
+		const containder1 = tool.upperCaseFirst(req.query.containder1);
+		const containder2 = tool.upperCaseFirst(req.query.containder2);
+		if (containder1 && containder2) {
+			result = result.filter(match => {
+				return (match.containders.indexOf(containder1) > -1 && match.containders.indexOf(containder2));
+			});
+		}
+
+		const playedBy = tool.upperCaseFirst(req.query.playedBy);
+		if (playedBy) {
+			result = result.filter(match => {
+				return match.containders.indexOf(playedBy) > -1;
+			});
+		}
+
+			res.send(result);
 	});
 }
