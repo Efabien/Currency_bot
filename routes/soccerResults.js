@@ -22,7 +22,7 @@ module.exports = (req, res) => {
 			match.winner = couples[0].points !== couples[1].points ? couples[0].team : undefined ;
 			match.score = description.match(/[0-9]+ - [0-9]+/)[0];
 			match.date = data.created;
-			match.id = match.containders.join('$') + '_' + match.score + '_' + match.date;
+			match.id = match.containders.join('$') + '-' + match.score + '-' + match.date;
 			return match;
 		});
 
