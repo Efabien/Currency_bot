@@ -1,5 +1,6 @@
 const rss=require('../modules/data/rss');
 const tool = require('../modules/managers/tool');
+const sha1 = require('sha1');
 
 module.exports = (req, res) => {
 	rss('championsLeagueResult', raw => {
@@ -22,7 +23,7 @@ module.exports = (req, res) => {
 			match.winner = couples[0].points !== couples[1].points ? couples[0].team : undefined ;
 			match.score = description.match(/[0-9]+ - [0-9]+/)[0];
 			match.date = data.created;
-			match.id = match.containders.join('$') + '-' + match.score + '-' + match.date;
+			match.id = sha1(match.containders.join('$') + '-' + match.score + '-' + match.date);
 			return match;
 		});
 
