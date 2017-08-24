@@ -60,8 +60,9 @@ module.exports = (req, res) => {
 			result.forEach((match, index) => {
 				if (match.id === id) start = index;
 			});
-
-			result = result.slice(start + 1, start + 1 + limit);
+			if (start === result.length - 1 || !start) result = [];
+			const stop = start + 1 + limit >= result.length ? result.length : start + 1 + limit;
+			result = result.slice(start + 1, stop);
 		}
 
 		res.send(result);
