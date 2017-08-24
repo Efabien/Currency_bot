@@ -22,6 +22,7 @@ module.exports = (req, res) => {
 			match.winner = couples[0].points !== couples[1].points ? couples[0].team : undefined ;
 			match.score = description.match(/[0-9]+ - [0-9]+/)[0];
 			match.date = data.created;
+			match.id = match.containders.join('$') + '_' + match.score + '_' + match.date;
 			return match;
 		});
 
@@ -40,11 +41,29 @@ module.exports = (req, res) => {
 				return match.containders.indexOf(playedBy) > -1;
 			});
 		}
+
 		result.sort((a, b) => {
 			if (a.date > b.date) return -1;
 					if (a.date < b.date) return 1;
 					return 0;	
 		});
+		
+		// by id
+		const id = req.query.id;
+		const limit = parseInt(req.query.limit);
+		if (id && !limit) {
+			result = result.filter(match => match.id === id);
+		}
+
+		if (id && limit) {
+			let start;
+			result.forEach((match, index) => {
+				if (match.id === id) start = index;
+			});
+
+			result = result.slice(start + 1, start + 1 + limit);
+		}
+
 		res.send(result);
 	});
 }
