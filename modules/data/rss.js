@@ -1,6 +1,6 @@
 const Feed = require('rss-to-json');
-module.exports=function(topic,callback){
-	const urlMap = {
+module.exports = (topic, callback) => {
+	const map = {
 		sports :'http://www.france24.com/fr/sports/rss',
 		foot :'http://www.matchendirect.fr/rss/info.xml',
 		actu :'http://www.france24.com/fr/actualites/rss',	
@@ -11,8 +11,8 @@ module.exports=function(topic,callback){
 		africe :'http://www.france24.com/fr/afrique/rss',
 		championsLeagueResult: 'http://www.soccerstats247.com/CompetitionFeed.aspx?langId=1&leagueId=1005'			
 	}
-	const url = urlMap[topic];
-Feed.load(url, function(err, rss){
+	const url = map[topic];
+Feed.load(url, (err, rss) => {
     if(err){
     	console.log(err)
     }else{
