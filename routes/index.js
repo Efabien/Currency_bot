@@ -5,6 +5,7 @@ const currency = require('./currency');
 const converte = require('./converte');
 const every = require('./every');
 const soccerResults = require('./soccerResults');
+const upcomingMatch = require('./upcomingMatch')
 
 //defining routes
 router.get('/',function(req,res){
@@ -32,5 +33,7 @@ router.get('/value/:money', currency);
 router.get('/converte/:money', converte);
 
 router.get('/soccer/championsLeague/results', soccerResults);
+
+router.get('/soccer/championsLeague/upcoming', upcomingMatch);
 
 exports.router=router;
