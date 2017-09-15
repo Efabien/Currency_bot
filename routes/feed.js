@@ -15,9 +15,12 @@ module.exports = (req,res) => {
 					res.send(toSend);
 				break;
 				case 'next' :
-					const foundItem = result.find((item, index, array) => {
-						if (item.id === id) return array[index + 1] || { error: 'No more news' };
-					});
+					const foundItem = result.map((item, index, array) => {
+						if (item.id === id) {
+							const found = array[index + 1];
+							return found || { error: 'No more news' };
+						}
+					})[0];
 					res.send(foundItem);
 				break;
 				case 'getAll' :
