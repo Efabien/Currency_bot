@@ -4,11 +4,11 @@ const Promise = require('bluebird');
  module.exports = class Scrapper {
 
 	getHtml(url) {
-		return new Promise(function(resolve,reject){
-			request(url,function(err,result,html){
-				if(err){
+		return new Promise((resolve, reject) => {
+			request(url, (err, result, html) => {
+				if (err) {
 					reject(err);
-				}else{
+				} else {
 					resolve(html);
 				}			
 			});

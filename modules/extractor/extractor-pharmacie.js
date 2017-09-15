@@ -5,17 +5,17 @@ const cheerio = require('cheerio');
 
 const url = 'http://ordrepharmacien.mg/recherche-pharmacie-de-garde/';
 
-module.exports = function() {
+module.exports = () => {
 
-	const _getAll =  function() {
+	const _getAll =  () => {
 		return scraper.getHtml(url)
 		.then(function(html){
 			const result = [];
 			const scrapped = cheerio.load(html);
-			scrapped('tr').each(function(i,el){
+			scrapped('tr').each((i,el) => {
 				const found = (el.children.length === 7);
 				if(found){
-					result.push(el.children.map(function(child){
+					result.push(el.children.map(child => {
 							if (child.name === 'td') return child.children;
 					}));
 				}
