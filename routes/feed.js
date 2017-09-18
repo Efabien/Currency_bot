@@ -20,7 +20,7 @@ module.exports = (req,res) => {
 							const found = array[index + 1];
 							return found || { error: 'No more news' };
 						}
-					})[0];
+					}).find(item => item);
 					res.send(foundItem);
 				break;
 				case 'getAll' :
